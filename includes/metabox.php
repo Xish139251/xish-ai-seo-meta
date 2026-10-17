@@ -4,10 +4,10 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-// 在文章与页面编辑侧栏注册元数据框
+// 在文章、页面以及公开自定义类型（OneNav 的 sites / app / book、WooCommerce product 等）编辑侧栏注册元数据框
 add_action( 'add_meta_boxes', 'xish_aism_register_metabox' );
 function xish_aism_register_metabox() {
-    $types = array( 'post', 'page' );
+    $types = xish_aism_supported_post_types();
     foreach ( $types as $t ) {
         add_meta_box(
             'xish_aism_metabox',
@@ -62,7 +62,7 @@ function xish_aism_save_meta( $post_id ) {
     if ( wp_is_post_revision( $post_id ) || wp_is_post_autosave( $post_id ) ) {
         return;
     }
-    if ( ! isset( $_POST['xish_aism_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['xish_aism_nonce'] ), 'xish_aism_generate' ) ) {
+    if ( ! isset( $_POST['xish_aism_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['xish_aism_nonce'] ) ), 'xish_aism_generate' ) ) {
         return;
     }
     if ( ! current_user_can( 'edit_post', $post_id ) ) {

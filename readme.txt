@@ -4,7 +4,7 @@ Tags: seo, ai, meta description, openai, gpt
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,6 +66,12 @@ The key is stored only in your own site database, encrypted where OpenSSL is ava
 
 Yes. The meta box is registered for both the block editor sidebar and the classic editor.
 
+= Why does this plugin call the AI API directly instead of using the WordPress AI Client? =
+
+The plugin is built around a "bring your own key, bring your own endpoint" model. You enter any OpenAI-compatible endpoint (OpenAI, LongCat, DeepSeek, a self-hosted gateway, and so on) and the plugin calls it with your own key.
+
+The WordPress AI Client introduced in WordPress 7.0 does not let a site owner supply an arbitrary endpoint and key. Using it would remove the plugin's core feature and would not work on sites running below WordPress 7.0, so the plugin integrates directly on purpose. All outbound requests only ever go to the endpoint you configure, and only when you click the generate button.
+
 == Screenshots ==
 
 1. The AI generate button and its results in the post editor sidebar.
@@ -73,11 +79,22 @@ Yes. The meta box is registered for both the block editor sidebar and the classi
 
 == Changelog ==
 
+= 1.0.1 =
+* Generated metadata is now actually output on the front end: title, meta description, keywords and Open Graph / Twitter tags are written into the page head.
+* Theme-agnostic output: tags already printed by the theme are detected and replaced, so a page only ever carries one set of tags, including on themes that hard-code their own title.
+* Works with posts, pages and public custom post types (for example OneNav's sites, app, book and bulletin).
+* Added a "Settings" shortcut link on the plugins screen.
+* Hardened the meta box save routine with sanitisation of the nonce field.
+* Added a Chinese user guide under docs/.
+
 = 1.0.0 =
 * Initial release: AI-generated SEO title, meta description, focus keywords, and social share copy for single posts.
 * Settings screen and a guidelines-compliant Pro upgrade link.
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Outputs the generated metadata on the front end, adds support for public custom post types, and improves compatibility with themes that print their own meta tags.
 
 = 1.0.0 =
 First stable release.
