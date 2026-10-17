@@ -8,6 +8,8 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 if ( function_exists( 'delete_post_meta_by_key' ) ) {
     delete_post_meta_by_key( '_xish_aism_seo_title' );
     delete_post_meta_by_key( '_xish_aism_seo_description' );
+    delete_post_meta_by_key( '_xish_aism_seo_keywords' );
+    delete_post_meta_by_key( '_xish_aism_seo_social' );
     // 顺带清理 Pro 写入的多语言键，避免卸载后留下孤儿元数据。
     delete_post_meta_by_key( '_xish_aism_seo_title_zh' );
     delete_post_meta_by_key( '_xish_aism_seo_title_en' );

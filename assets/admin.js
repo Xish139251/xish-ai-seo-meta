@@ -34,7 +34,9 @@ jQuery( function ( $ ) {
                 if ( resp.success ) {
                     $( '#xish_aism_title' ).val( resp.data.title );
                     $( '#xish_aism_desc' ).val( resp.data.description );
-                    $status.text( '已生成，焦点词：' + resp.data.keywords );
+                    $( '#xish_aism_keywords' ).val( resp.data.keywords );
+                    $( '#xish_aism_social' ).val( resp.data.social );
+                    $status.text( '已生成 ✅' );
                 } else {
                     $status.text( '错误：' + resp.data.message );
                 }

@@ -23,8 +23,10 @@ function xish_aism_register_metabox() {
 // 渲染元数据框。nonce 用于后续保存与 AJAX 校验。
 function xish_aism_metabox_render( $post ) {
     wp_nonce_field( 'xish_aism_generate', 'xish_aism_nonce' );
-    $title = get_post_meta( $post->ID, '_xish_aism_seo_title', true );
-    $desc  = get_post_meta( $post->ID, '_xish_aism_seo_description', true );
+    $title  = get_post_meta( $post->ID, '_xish_aism_seo_title', true );
+    $desc   = get_post_meta( $post->ID, '_xish_aism_seo_description', true );
+    $kw     = get_post_meta( $post->ID, '_xish_aism_seo_keywords', true );
+    $social = get_post_meta( $post->ID, '_xish_aism_seo_social', true );
     ?>
     <p>
         <button type="button" class="button" id="xish_aism_generate_btn"><?php echo esc_html__( '用 AI 生成', 'xish-ai-seo-meta' ); ?></button>
@@ -37,6 +39,14 @@ function xish_aism_metabox_render( $post ) {
     <p>
         <label><?php echo esc_html__( 'SEO 描述', 'xish-ai-seo-meta' ); ?><br>
         <textarea class="widefat" id="xish_aism_desc" name="xish_aism_seo_description" rows="3"><?php echo esc_textarea( $desc ); ?></textarea></label>
+    </p>
+    <p>
+        <label><?php echo esc_html__( '焦点关键词', 'xish-ai-seo-meta' ); ?><br>
+        <input type="text" class="widefat" id="xish_aism_keywords" name="xish_aism_seo_keywords" value="<?php echo esc_attr( $kw ); ?>"></label>
+    </p>
+    <p>
+        <label><?php echo esc_html__( '社交分享文案', 'xish-ai-seo-meta' ); ?><br>
+        <textarea class="widefat" id="xish_aism_social" name="xish_aism_seo_social" rows="2"><?php echo esc_textarea( $social ); ?></textarea></label>
     </p>
     <p class="description" id="xish_aism_status"></p>
     <?php
@@ -63,6 +73,12 @@ function xish_aism_save_meta( $post_id ) {
     }
     if ( isset( $_POST['xish_aism_seo_description'] ) ) {
         update_post_meta( $post_id, '_xish_aism_seo_description', sanitize_textarea_field( wp_unslash( $_POST['xish_aism_seo_description'] ) ) );
+    }
+    if ( isset( $_POST['xish_aism_seo_keywords'] ) ) {
+        update_post_meta( $post_id, '_xish_aism_seo_keywords', sanitize_text_field( wp_unslash( $_POST['xish_aism_seo_keywords'] ) ) );
+    }
+    if ( isset( $_POST['xish_aism_seo_social'] ) ) {
+        update_post_meta( $post_id, '_xish_aism_seo_social', sanitize_textarea_field( wp_unslash( $_POST['xish_aism_seo_social'] ) ) );
     }
 }
 

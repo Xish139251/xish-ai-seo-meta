@@ -172,7 +172,9 @@ function xish_aism_settings_page() {
     if ( ! current_user_can( 'manage_options' ) ) {
         return;
     }
-    $pro_url = 'https://xish.example.com/plugins/xish-ai-seo-meta-pro';
+    // 升级入口指向真实售卖页（爱发电主页）。GitHub Pages 落地页上线后改为此处落地页地址，
+    // 让买家先看价值再下单。
+    $pro_url = 'https://afdian.com/a/xish1';
     ?>
     <div class="wrap">
         <h1><?php echo esc_html__( 'Xish AI SEO Meta 设置', 'xish-ai-seo-meta' ); ?></h1>
