@@ -1,0 +1,7 @@
+.wp-env.json
+LOCAL-VALIDATION.md
+_backup/
+__pycache__/
+.DS_Store
+.zip-build/
+*.zip
