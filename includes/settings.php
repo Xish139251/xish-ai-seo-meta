@@ -209,7 +209,7 @@ function xish_aism_field_provider() {
         'openai' => __( 'OpenAI 兼容', 'xish-ai-seo-meta' ),
         'custom' => __( '自定义端点', 'xish-ai-seo-meta' ),
     );
-    echo '<select name="' . XISH_AISM_OPTION . '[provider]">';
+    echo '<select name="' . esc_attr( XISH_AISM_OPTION ) . '[provider]">';
     foreach ( $providers as $k => $label ) {
         printf(
             '<option value="%s" %s>%s</option>',
@@ -226,7 +226,7 @@ function xish_aism_field_api_key() {
     $has_key = ( '' !== $s['api_key'] );
     printf(
         '<input type="password" class="regular-text" name="%s[api_key]" value="" autocomplete="new-password" placeholder="%s">',
-        XISH_AISM_OPTION,
+        esc_attr( XISH_AISM_OPTION ),
         $has_key ? esc_attr__( '已保存密钥，留空则不修改', 'xish-ai-seo-meta' ) : ''
     );
     echo '<p class="description">' . esc_html__( '密钥仅存储于本站数据库，不会发送到你所配置端点以外的任何服务器。留空表示沿用已保存的密钥。', 'xish-ai-seo-meta' ) . '</p>';
@@ -236,7 +236,7 @@ function xish_aism_field_endpoint() {
     $s = xish_aism_get_settings();
     printf(
         '<input type="url" class="regular-text" name="%s[endpoint]" value="%s">',
-        XISH_AISM_OPTION,
+        esc_attr( XISH_AISM_OPTION ),
         esc_attr( $s['endpoint'] )
     );
 }
@@ -245,7 +245,7 @@ function xish_aism_field_model() {
     $s = xish_aism_get_settings();
     printf(
         '<input type="text" class="regular-text" name="%s[model]" value="%s">',
-        XISH_AISM_OPTION,
+        esc_attr( XISH_AISM_OPTION ),
         esc_attr( $s['model'] )
     );
 }
@@ -257,7 +257,7 @@ function xish_aism_field_language() {
         'zh'   => __( '中文', 'xish-ai-seo-meta' ),
         'en'   => __( 'English', 'xish-ai-seo-meta' ),
     );
-    echo '<select name="' . XISH_AISM_OPTION . '[language]">';
+    echo '<select name="' . esc_attr( XISH_AISM_OPTION ) . '[language]">';
     foreach ( $langs as $k => $label ) {
         printf(
             '<option value="%s" %s>%s</option>',
