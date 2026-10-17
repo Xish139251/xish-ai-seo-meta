@@ -1,67 +1,83 @@
 === Xish AI SEO Meta ===
-Contributors: xish
-Tags: seo, ai, meta, openai, gpt
+Contributors: xish139251
+Tags: seo, ai, meta description, openai, gpt
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 1.0.0
-License: GPL v2 or later
+License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-一键调用大语言模型为单篇文章生成 SEO 标题、描述、焦点关键词与社交分享文案。
+Generate SEO titles, meta descriptions, focus keywords and social copy for a single post with AI, using your own OpenAI-compatible API key.
 
 == Description ==
 
-Xish AI SEO Meta 帮你用 AI 快速写出更利于搜索排名的 SEO 元数据。在文章/页面编辑侧栏点击「用 AI 生成」，即可基于标题与正文产出：
+Xish AI SEO Meta writes your SEO metadata with AI, directly inside the post editor. Click "Generate with AI" in the editor sidebar and the plugin returns, based on the post title and content:
 
-= 免费版功能 =
+* SEO title (kept within 60 characters)
+* Meta description (kept within 160 characters)
+* Focus keywords (up to 5)
+* Social share copy
 
-* SEO 标题（建议不超过 60 字符）
-* SEO 描述（建议不超过 160 字符）
-* 焦点关键词（自动提炼 5 个以内）
-* 社交分享文案
+The free version is fully functional for single-post generation. It uses your own OpenAI-compatible API key, so there is no subscription and no account with us.
 
-免费版使用你自己的 OpenAI 兼容 API Key，开箱即可完整使用单篇生成，无需升级。
+= Upgrade to Pro =
 
-= 升级到 Pro =
+A separate Pro plugin unlocks bulk generation, bilingual (Chinese and English) fields, backfilling of older posts, and one-click sync to Rank Math and Yoast SEO. See the "Upgrade to Pro" link on the plugin settings page, or visit https://xish139251.github.io/xish-ai-seo-meta-landing/.
 
-Pro 版解锁：批量生成、中英文多语言、历史文章回填、一键写入 Rank Math / Yoast。详情见插件设置页的「升级到 Pro」链接，或访问官网 https://xish139251.github.io/xish-ai-seo-meta-landing/。
+= External services =
+
+This plugin connects to the API endpoint you configure. By default this is https://api.openai.com/v1/chat/completions, the OpenAI Chat Completions API.
+
+When you click the generate button, the following data is sent to that endpoint: the post title, the first 4,000 characters of the post content, and your API key in the Authorization header. The endpoint returns the generated metadata to your site.
+
+No data is sent anywhere else. Nothing is sent until you explicitly click the generate button, and the plugin sends no telemetry.
+
+The terms and privacy policy of the endpoint provider you choose apply to the data you send there. For the default endpoint these are the OpenAI API terms (https://openai.com/policies/) and the OpenAI privacy policy (https://openai.com/policies/privacy-policy/). If you point the plugin at a different provider, that provider's terms apply instead.
+
+= Privacy =
+
+* Sent to the configured endpoint: post title, post content excerpt (first 4,000 characters), and your API key in the Authorization header.
+* Stored locally: your API key, encrypted with your site's WordPress salts where OpenSSL is available, in the WordPress options table.
+* Not collected: no usage data, no IP addresses, no analytics, no tracking.
 
 == Installation ==
 
-1. 上传插件文件到 `/wp-content/plugins/xish-ai-seo-meta` 目录，或直接通过后台安装。
-2. 在「插件」中激活 Xish AI SEO Meta。
-3. 进入「设置 → AI SEO Meta」，填写你的 API Key、端点与模型名称。
-4. 编辑任意文章/页面，在右侧边栏点击「用 AI 生成」。
+1. Upload the plugin files to the /wp-content/plugins/xish-ai-seo-meta directory, or install the plugin through the WordPress Plugins screen directly.
+2. Activate the plugin through the Plugins screen.
+3. Go to Settings > AI SEO Meta and enter your API key, endpoint, and model name.
+4. Edit any post or page and click "Generate with AI" in the editor sidebar.
 
 == Frequently Asked Questions ==
 
-= 免费版需要付费吗？ =
+= Does the free version cost anything? =
 
-不需要。免费版使用你自己的 API Key，仅向你配置的端点发起请求。
+No. The free version uses your own API key and only sends requests to the endpoint you configure.
 
-= 支持哪些模型？ =
+= Which models are supported? =
 
-任何兼容 OpenAI Chat Completions 接口的模型均可，默认 gpt-4o-mini。
+Any model that implements the OpenAI Chat Completions API. The default is gpt-4o-mini.
 
-= API Key 安全吗？ =
+= Is my API key safe? =
 
-密钥仅存储于你自己的站点数据库，插件只会把它发送到你在设置中填写的端点。
+The key is stored only in your own site database, encrypted where OpenSSL is available, and is only ever sent to the endpoint you configure.
+
+= Does it work with the block editor and the classic editor? =
+
+Yes. The meta box is registered for both the block editor sidebar and the classic editor.
 
 == Screenshots ==
 
-1. 文章编辑页的 AI 生成按钮与结果回填。
-2. 设置页：填写 API Key、端点与模型。
+1. The AI generate button and its results in the post editor sidebar.
+2. The settings screen, where you enter your API key, endpoint, and model.
 
 == Changelog ==
 
 = 1.0.0 =
-
-* 初始版本：单篇 AI 生成 SEO 标题、描述、关键词与社交文案。
-* 内置设置页与合规的 Pro 升级入口。
+* Initial release: AI-generated SEO title, meta description, focus keywords, and social share copy for single posts.
+* Settings screen and a guidelines-compliant Pro upgrade link.
 
 == Upgrade Notice ==
 
 = 1.0.0 =
-
-首个稳定版本，推荐安装。
+First stable release.
