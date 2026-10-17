@@ -33,7 +33,8 @@ function xish_aism_generate( $post_id, $lang = '' ) {
 
     $title   = get_the_title( $post );
     $content = wp_strip_all_tags( $post->post_content );
-    $content = mb_substr( $content, 0, 4000 ); // 截断以控制 token 用量
+    // 截断以控制 token 用量；少数未启用 mbstring 扩展的主机会缺失 mb_substr，做兜底
+    $content = function_exists( 'mb_substr' ) ? mb_substr( $content, 0, 4000 ) : substr( $content, 0, 4000 );
 
     $prompt = sprintf(
         '你是一名资深 SEO 编辑。用%s为下面这篇文章生成元数据，只返回 JSON：{"title": SEO标题(不超过60字符), "description": 描述(不超过160字符), "keywords": 逗号分隔的焦点关键词(不超过5个), "social": 社交分享文案(不超过140字符)}。文章标题：%s。文章正文：%s',
@@ -76,7 +77,14 @@ function xish_aism_generate( $post_id, $lang = '' ) {
 
     $code = (int) wp_remote_retrieve_response_code( $response );
     if ( 200 !== $code ) {
-        return new WP_Error( 'api_error', sprintf( __( 'API 返回错误码 %d。', 'xish-ai-seo-meta' ), $code ) );
+        return new WP_Error(
+            'api_error',
+            sprintf(
+                /* translators: %d: HTTP status code returned by the configured API endpoint. */
+                __( 'API 返回错误码 %d。', 'xish-ai-seo-meta' ),
+                $code
+            )
+        );
     }
 
     $raw = wp_remote_retrieve_body( $response );
