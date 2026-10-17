@@ -1,14 +1,14 @@
 <?php
 /**
  * Plugin Name: Xish AI SEO Meta
- * Plugin URI: https://xish.example.com/plugins/xish-ai-seo-meta
+ * Plugin URI: https://xish139251.github.io/xish-ai-seo-meta-landing
  * Description: 一键调用大语言模型为单篇文章生成 SEO 标题、描述、焦点关键词与社交分享文案。支持自带 OpenAI 兼容 API Key，免费版即可完整使用单篇生成。
  * Version: 1.0.0
  * Requires at least: 6.4
  * Tested up to: 7.1
  * Requires PHP: 7.4
  * Author: Xish
- * Author URI: https://xish.example.com
+ * Author URI: https://github.com/Xish139251
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: xish-ai-seo-meta

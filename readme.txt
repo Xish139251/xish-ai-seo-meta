@@ -25,7 +25,7 @@ Xish AI SEO Meta 帮你用 AI 快速写出更利于搜索排名的 SEO 元数据
 
 = 升级到 Pro =
 
-Pro 版解锁：批量生成、中英文多语言、历史文章回填、一键写入 Rank Math / Yoast。详情见插件设置页的「升级到 Pro」链接。
+Pro 版解锁：批量生成、中英文多语言、历史文章回填、一键写入 Rank Math / Yoast。详情见插件设置页的「升级到 Pro」链接，或访问官网 https://xish139251.github.io/xish-ai-seo-meta-landing/。
 
 == Installation ==
 
