@@ -172,9 +172,9 @@ function xish_aism_settings_page() {
     if ( ! current_user_can( 'manage_options' ) ) {
         return;
     }
-    // 升级入口指向真实售卖页（爱发电主页）。GitHub Pages 落地页上线后改为此处落地页地址，
-    // 让买家先看价值再下单。
-    $pro_url = 'https://afdian.com/a/xish1';
+    // 升级入口指向插件官网（GitHub Pages 落地页）。wp.org 不允许插件内直接外链第三方
+    // 支付平台，故此处只链官网；官网内的购买按钮再跳转爱发电，既合规又保留免费→Pro 漏斗。
+    $pro_url = 'https://xish139251.github.io/xish-ai-seo-meta-landing/';
     ?>
     <div class="wrap">
         <h1><?php echo esc_html__( 'Xish AI SEO Meta 设置', 'xish-ai-seo-meta' ); ?></h1>
