@@ -5,4 +5,4 @@ WordPress SEO 元数据插件：用 AI 为文章生成 SEO 标题与描述。
 
 ## 支持作者
 
-如果这个插件帮到了你，欢迎到爱发电支持我：https://afdian.com/a/你的ID
+如果这个插件帮到了你，欢迎到爱发电支持我：https://afdian.com/a/xish1
